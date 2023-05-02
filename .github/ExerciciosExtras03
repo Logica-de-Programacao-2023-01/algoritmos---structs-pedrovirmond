@@ -4,30 +4,22 @@
 package main
 
 type Aluno struct {
-	nome  string
-	idade int
-	notas float64
+	Nome  string
+	Idade int
+	Notas []float64
 }
-type Notas struct {
-	nota1 float64
-	nota2 float64
-	nota3 float64
-}
-
 func main() {
 	a := Aluno{
-		nome:  "Wellington",
-		idade: 18,
-		notas: Notas{
-			nota1: 67.43,
-			nota2: 54.94,
-			nota3: 83.71,
-		},
+		Nome:  "Wellington",
+		Idade: 18,
+		Notas: []float64{75.54, 86.23, 92.65, 43.71, 78.59},
 	}
+}fmt.Println("")
 
-}
-func UmAluno(a Aluno) float64 {
-	return (a.notas.nota1 + a.notas.nota2 + a.notas.nota3) / 3
-}
-
+func media(a Aluno) float64 {
+	var sum float64
+	for _, nota := range a.Notas {
+		sum += nota
+	}
+	return sum / float64(len(a.Notas))
 }
